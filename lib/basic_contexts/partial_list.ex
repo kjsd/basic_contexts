@@ -1,7 +1,6 @@
 defmodule BasicContexts.PartialList do
   defmacro __using__(opts) do
-    {repo_, pn_, s_, o_} = {opts[:repo], opts[:plural], opts[:plural], opts[:schema],
-                            opts[:order_by]}
+    {repo_, pn_, s_, o_} = {opts[:repo], opts[:plural], opts[:schema], opts[:order_by]}
     
     wfn_ = Keyword.get(opts, :where_fn, Macro.escape(&__MODULE__.nop_/2))
     lfn_ = Keyword.get(opts, :last_fn, Macro.escape(&__MODULE__.nop_/2))
