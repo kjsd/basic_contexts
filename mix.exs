@@ -2,12 +2,13 @@ defmodule BasicContexts.MixProject do
   use Mix.Project
 
   @description"""
+  BasicContexts on ecto.
   """
   
   def project do
     [
-      app: :baseic_contexts,
-      version: "0.1.0",
+      app: :basic_contexts,
+      version: "0.1.1",
       elixir: "~> 1.14",
       description: @description,
       package: package(),
@@ -19,7 +20,7 @@ defmodule BasicContexts.MixProject do
   def package do
     [
       maintainers: ["kjsd"],
-      licenses: ["BSD-2-Clause license"],
+      licenses: ["BSD-2-Clause"],
       links: %{ "Github": "https://github.com/kjsd/basic_contexts" }
     ]
   end
