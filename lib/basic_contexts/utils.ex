@@ -62,4 +62,23 @@ defmodule BasicContexts.Utils do
         |> Date.end_of_month()
     end
   end
+
+  def disjoint?({xs, xe}, {ys, ye}) do
+    xs = xs |> Kernel.||(~T[00:00:00])
+    ys = ys |> Kernel.||(~T[00:00:00])
+    xe = xe |> Kernel.||(~T[23:59:59])
+    ye = ye |> Kernel.||(~T[23:59:59])
+    
+    {xst, _} = Time.to_seconds_after_midnight(xs)
+    {xet, _} = Time.to_seconds_after_midnight(xe)
+    {yst, _} = Time.to_seconds_after_midnight(ys)
+    {yet, _} = Time.to_seconds_after_midnight(ye)
+
+    if xst <= xet and yst <= yet do
+      Range.disjoint?(xst..xet, yst..yet)
+    else
+      true
+    end
+  end
+
 end
