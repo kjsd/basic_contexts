@@ -63,6 +63,28 @@ defmodule BasicContexts.Utils do
     end
   end
 
+  def include?({xs, xe}, {ys, ye}) do
+    xs = xs |> Kernel.||(~T[00:00:00])
+    ys = ys |> Kernel.||(~T[00:00:00])
+    xe = xe |> Kernel.||(~T[23:59:59])
+    ye = ye |> Kernel.||(~T[23:59:59])
+
+    xs <= ys and ys <= ye and ye <= xe
+  end
+
+  def disjoint_ne?({xs, xe}, {ys, ye}) do
+    xs = xs |> Kernel.||(~T[00:00:00])
+    ys = ys |> Kernel.||(~T[00:00:00])
+    xe = xe |> Kernel.||(~T[23:59:59])
+    ye = ye |> Kernel.||(~T[23:59:59])
+
+    if xs <= xe and ys <= ye do
+      xe < ys or ye < xs
+    else
+      true
+    end
+  end
+
   def disjoint?({xs, xe}, {ys, ye}) do
     xs = xs |> Kernel.||(~T[00:00:00])
     ys = ys |> Kernel.||(~T[00:00:00])
