@@ -8,7 +8,7 @@ defmodule BasicContexts.MixProject do
   def project do
     [
       app: :basic_contexts,
-      version: "0.1.7",
+      version: "0.1.8",
       elixir: "~> 1.14",
       description: @description,
       package: package(),

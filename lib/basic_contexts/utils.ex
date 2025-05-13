@@ -79,7 +79,7 @@ defmodule BasicContexts.Utils do
     ye = ye |> Kernel.||(~T[23:59:59])
 
     if xs <= xe and ys <= ye do
-      xe < ys or ye < xs
+      xe <= ys or ye <= xs
     else
       true
     end
